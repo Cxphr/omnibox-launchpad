@@ -1,0 +1,13 @@
+# build output
+*.exe
+*.o
+*.obj
+omnibox
+build/
+
+# editors / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
