@@ -1,13 +1,13 @@
-# build output
 *.exe
 *.o
 *.obj
-omnibox
-build/
-
-# editors / OS
+*.ilk
+*.pdb
+*.dll
+*.exp
+*.lib
+*.res
+omnibox.exe
 .vscode/
-.idea/
-*.swp
-Thumbs.db
 .DS_Store
+Thumbs.db

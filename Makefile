@@ -1,24 +1,10 @@
-CXX      ?= g++
-CXXFLAGS ?= -std=c++17 -O2 -Wall -Wextra
-TARGET   := omnibox
-SRC      := src/main.cpp
+CXX = x86_64-w64-mingw32-g++
+CXXFLAGS = -std=c++17 -Os -O2 -flto -ffunction-sections -fdata-sections
+LDFLAGS = -static -s -mwindows -municode -Wl,--gc-sections
+LIBS = -luser32 -lgdi32 -lshell32 -lshlwapi -lcomctl32 -lole32 -ldwmapi
 
-ifeq ($(OS),Windows_NT)
-	TARGET := omnibox.exe
-	RM     := del /Q
-else
-	RM     := rm -f
-endif
-
-all: $(TARGET)
-
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
-
-run: $(TARGET)
-	./$(TARGET)
+omnibox.exe: src/main.cpp
+	$(CXX) $(CXXFLAGS) src/main.cpp -o omnibox.exe $(LDFLAGS) $(LIBS)
 
 clean:
-	$(RM) $(TARGET)
-
-.PHONY: all run clean
+	rm -f omnibox.exe
